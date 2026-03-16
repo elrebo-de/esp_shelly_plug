@@ -10,4 +10,4 @@ files:
   use_gitignore: "true"
 dependencies:
   idf: ">=5.5.0"
-  sachin42/httpclient: ^1.0.1
+  elrebo-de/http_client: 1.0.1
