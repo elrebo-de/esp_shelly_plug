@@ -24,6 +24,7 @@ public:
     void Toggle();
     void Switch(bool switchState);
     void Switch(bool switchState, uint16_t toggleAfter);
+    std::string ReadResponse();
     int GetLastHttpCode();
 
 private:	

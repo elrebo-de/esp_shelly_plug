@@ -34,12 +34,7 @@ ShellyPlug::ShellyPlug(std::string tag, std::string ipAddr) {
         ESP_LOGI(this->tag.c_str(), "HTTP GET code: %d", this->httpCode);
         if (this->httpCode == HTTP_CODE_OK)
         {
-            ESP_LOGI(this->tag.c_str(), "HTTP GET successful. Response:");
-            if (this->shellyPlug->available() > 0 || this->shellyPlug->connected())
-            {
-                String payload = this->shellyPlug->readString();
-                ESP_LOGI(this->tag.c_str(), "%s", payload.c_str());
-            }
+            ESP_LOGI(this->tag.c_str(), "HTTP GET successful.");
         }
     }
     else
@@ -69,12 +64,7 @@ void ShellyPlug::Switch(bool switchState) {
         ESP_LOGI(this->tag.c_str(), "HTTP GET code: %d", this->httpCode);
         if (this->httpCode == HTTP_CODE_OK)
         {
-            ESP_LOGI(this->tag.c_str(), "HTTP GET successful. Response:");
-            if (this->shellyPlug->available() > 0 || this->shellyPlug->connected())
-            {
-                String payload = this->shellyPlug->readString();
-                ESP_LOGI(this->tag.c_str(), "%s", payload.c_str());
-            }
+            ESP_LOGI(this->tag.c_str(), "HTTP GET successful.");
         }
     }
     else
@@ -103,18 +93,22 @@ void ShellyPlug::Switch(bool switchState, uint16_t toggleAfter) {
         ESP_LOGI(this->tag.c_str(), "HTTP GET code: %d", this->httpCode);
         if (this->httpCode == HTTP_CODE_OK)
         {
-            ESP_LOGI(this->tag.c_str(), "HTTP GET successful. Response:");
-            if (this->shellyPlug->available() > 0 || this->shellyPlug->connected())
-            {
-                String payload = this->shellyPlug->readString();
-                ESP_LOGI(this->tag.c_str(), "%s", payload.c_str());
-            }
+            ESP_LOGI(this->tag.c_str(), "HTTP GET successful.");
         }
     }
     else
     {
         ESP_LOGE(this->tag.c_str(), "HTTP GET failed, error: %s", HTTPClient::errorToString(this->httpCode).c_str());
     }
+}
+
+std::string ShellyPlug::ReadResponse() {
+    std::string payload = "";
+    if (this->shellyPlug->available() > 0 || this->shellyPlug->connected())
+    {
+        payload = std::string(this->shellyPlug->readString().c_str());
+    }
+    return payload;
 }
 
 void ShellyPlug::Toggle() {

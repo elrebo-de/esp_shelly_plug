@@ -30,14 +30,21 @@ extern "C" void app_main(void)
         ESP_LOGI(tag, "No Shelly Plug at IPAddr %s", ipAddrShellyPlug.c_str());
     }
     else {
+        // Response from constructor
+        ESP_LOGI(tag, "Response: %s", shellyWozi.ReadResponse().c_str()); // ReadResponse needs 1000 msec
+
         shellyWozi.Switch(true, (uint16_t) 5);
-        vTaskDelay(10000 / portTICK_PERIOD_MS);
+        ESP_LOGI(tag, "Response: %s", shellyWozi.ReadResponse().c_str()); // ReadResponse needs 1000 msec
+        vTaskDelay(9000 / portTICK_PERIOD_MS);
         shellyWozi.Switch(true);
-        vTaskDelay(5000 / portTICK_PERIOD_MS);
+        ESP_LOGI(tag, "Response: %s", shellyWozi.ReadResponse().c_str()); // ReadResponse needs 1000 msec
+        vTaskDelay(4000 / portTICK_PERIOD_MS);
         shellyWozi.Switch(false);
-        vTaskDelay(5000 / portTICK_PERIOD_MS);
+        ESP_LOGI(tag, "Response: %s", shellyWozi.ReadResponse().c_str()); // ReadResponse needs 1000 msec
+        vTaskDelay(4000 / portTICK_PERIOD_MS);
         shellyWozi.Toggle();
-        vTaskDelay(5000 / portTICK_PERIOD_MS);
+        ESP_LOGI(tag, "Response: %s", shellyWozi.ReadResponse().c_str()); // ReadResponse needs 1000 msec
+        vTaskDelay(4000 / portTICK_PERIOD_MS);
         shellyWozi.Toggle();
     }
 }
