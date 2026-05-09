@@ -1,4 +1,4 @@
-version: "1.0.8"
+version: "1.0.9"
 license: "Apache 2.0"
 description: "Component to control a Shelly Plug for ESP-IDF version 5.5.0+ using a C++ class"
 url: "https://elrebo.de/index.php/2026/02/26/shelly_plug/"
@@ -10,4 +10,4 @@ files:
   use_gitignore: "true"
 dependencies:
   idf: ">=5.5.0"
-  elrebo-de/http_client: 1.0.4
+  elrebo-de/http_client: 1.0.5
