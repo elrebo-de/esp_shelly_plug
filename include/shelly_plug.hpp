@@ -20,6 +20,7 @@
 class ShellyPlug {
 public:
 	ShellyPlug(std::string tag, std::string ipAddr);
+	ShellyPlug(std::string tag, std::string ipAddr, bool initialState);
 	virtual ~ShellyPlug();
     void Toggle();
     void Switch(bool switchState);
